@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Behavior.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Behavior.Models;
 
 namespace Behavior.Controllers
 {
@@ -58,7 +55,7 @@ namespace Behavior.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("api/Learn/Create/{Learn}")]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description")] Learn learn)
+        public async Task<IActionResult> Create([FromBody] Learn learn)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +89,7 @@ namespace Behavior.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description")] Learn learn)
+        public async Task<IActionResult> Edit(int id, [FromBody] Learn learn)
         {
             if (id != learn.Id)
             {

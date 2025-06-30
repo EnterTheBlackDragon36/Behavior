@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Behavior.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Behavior.Models;
 
 namespace Behavior.Controllers
 {
@@ -58,7 +55,7 @@ namespace Behavior.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("api/Needs/Create/{Need}")]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description")] Need need)
+        public async Task<IActionResult> Create([FromBody] Need need)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +89,7 @@ namespace Behavior.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description")] Need need)
+        public async Task<IActionResult> Edit(int id, [FromBody] Need need)
         {
             if (id != need.Id)
             {
