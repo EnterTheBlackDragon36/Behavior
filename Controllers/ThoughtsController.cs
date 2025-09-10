@@ -20,7 +20,7 @@ namespace Behavior.Controllers
         [Route("api/Thoughts/Index")]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Thoughts.ToListAsync());
+            return Ok(await _context.Thoughts.ToListAsync());
         }
 
         // GET: Thoughts/Details/5
@@ -40,13 +40,13 @@ namespace Behavior.Controllers
                 return NotFound();
             }
 
-            return View(thought);
+            return Ok(thought);
         }
 
         // GET: Thoughts/Create
         public IActionResult Create()
         {
-            return View();
+            return Ok();
         }
 
         // POST: Thoughts/Create
@@ -63,7 +63,7 @@ namespace Behavior.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(thought);
+            return Ok(thought);
         }
 
         // GET: Thoughts/Edit/5
@@ -81,7 +81,7 @@ namespace Behavior.Controllers
             {
                 return NotFound();
             }
-            return View(thought);
+            return Ok(thought);
         }
 
         // POST: Thoughts/Edit/5
@@ -116,7 +116,7 @@ namespace Behavior.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(thought);
+            return Ok(thought);
         }
 
         // GET: Thoughts/Delete/5
@@ -136,7 +136,7 @@ namespace Behavior.Controllers
                 return NotFound();
             }
 
-            return View(thought);
+            return Ok(thought);
         }
 
         // POST: Thoughts/Delete/5

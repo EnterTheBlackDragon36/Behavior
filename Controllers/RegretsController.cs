@@ -20,7 +20,7 @@ namespace Behavior.Controllers
         [Route("api/Regrets/Index")]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Regrets.ToListAsync());
+            return Ok(await _context.Regrets.ToListAsync());
         }
 
         // GET: Regrets/Details/5
@@ -40,13 +40,13 @@ namespace Behavior.Controllers
                 return NotFound();
             }
 
-            return View(regret);
+            return Ok(regret);
         }
 
         // GET: Regrets/Create
         public IActionResult Create()
         {
-            return View();
+            return Ok();
         }
 
         // POST: Regrets/Create
@@ -63,7 +63,7 @@ namespace Behavior.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(regret);
+            return Ok(regret);
         }
 
         // GET: Regrets/Edit/5
@@ -81,7 +81,7 @@ namespace Behavior.Controllers
             {
                 return NotFound();
             }
-            return View(regret);
+            return Ok(regret);
         }
 
         // POST: Regrets/Edit/5
@@ -116,7 +116,7 @@ namespace Behavior.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(regret);
+            return Ok(regret);
         }
 
         // GET: Regrets/Delete/5
@@ -136,7 +136,7 @@ namespace Behavior.Controllers
                 return NotFound();
             }
 
-            return View(regret);
+            return Ok(regret);
         }
 
         // POST: Regrets/Delete/5

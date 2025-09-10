@@ -20,7 +20,7 @@ namespace Behavior.Controllers
         [Route("api/Learn/Index")]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Learns.ToListAsync());
+            return Ok(await _context.Learns.ToListAsync());
         }
 
         // GET: Learn/Details/5
@@ -40,13 +40,13 @@ namespace Behavior.Controllers
                 return NotFound();
             }
 
-            return View(learn);
+            return Ok(learn);
         }
 
         // GET: Learn/Create
         public IActionResult Create()
         {
-            return View();
+            return Ok();
         }
 
         // POST: Learn/Create
@@ -63,7 +63,7 @@ namespace Behavior.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(learn);
+            return Ok(learn);
         }
 
         // GET: Learn/Edit/5
@@ -81,7 +81,7 @@ namespace Behavior.Controllers
             {
                 return NotFound();
             }
-            return View(learn);
+            return Ok(learn);
         }
 
         // POST: Learn/Edit/5
@@ -116,7 +116,7 @@ namespace Behavior.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(learn);
+            return Ok(learn);
         }
 
         // GET: Learn/Delete/5
@@ -136,7 +136,7 @@ namespace Behavior.Controllers
                 return NotFound();
             }
 
-            return View(learn);
+            return Ok(learn);
         }
 
         // POST: Learn/Delete/5

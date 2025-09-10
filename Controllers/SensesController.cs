@@ -20,7 +20,7 @@ namespace Behavior.Controllers
         [Route("api/Senses/Index")]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Senses.ToListAsync());
+            return Ok(await _context.Senses.ToListAsync());
         }
 
         // GET: Senses/Details/5
@@ -40,13 +40,13 @@ namespace Behavior.Controllers
                 return NotFound();
             }
 
-            return View(sense);
+            return Ok(sense);
         }
 
         // GET: Senses/Create
         public IActionResult Create()
         {
-            return View();
+            return Ok();
         }
 
         // POST: Senses/Create
@@ -63,7 +63,7 @@ namespace Behavior.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(sense);
+            return Ok(sense);
         }
 
         // GET: Senses/Edit/5
@@ -81,7 +81,7 @@ namespace Behavior.Controllers
             {
                 return NotFound();
             }
-            return View(sense);
+            return Ok(sense);
         }
 
         // POST: Senses/Edit/5
@@ -116,7 +116,7 @@ namespace Behavior.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(sense);
+            return Ok(sense);
         }
 
         // GET: Senses/Delete/5
@@ -136,7 +136,7 @@ namespace Behavior.Controllers
                 return NotFound();
             }
 
-            return View(sense);
+            return Ok(sense);
         }
 
         // POST: Senses/Delete/5

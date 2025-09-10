@@ -19,35 +19,43 @@ namespace Behavior.Controllers
         // GET: Actions
         [HttpGet]
         [Route("api/Actions/Index")]
-        public async Task<IActionResult> Index()
+        public ActionResult Index()
         {
-            return View(await _context.Actions.ToListAsync());
+            var actions = _context.Actions.ToList();
+            if (actions == null)
+            {
+                return BadRequest();
+            }
+            else 
+            {
+                return Ok(actions);
+            }
         }
 
         // GET: Actions/Details/5
         [HttpGet]
         [Route("api/Actions/Details/{id}")]
-        public async Task<IActionResult> Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var action = await _context.Actions
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var action = _context.Actions
+                .FirstOrDefault(m => m.Id == id);
             if (action == null)
             {
                 return NotFound();
             }
 
-            return View(action);
+            return Ok(action);
         }
 
         // GET: Actions/Create
         public IActionResult Create()
         {
-            return View();
+            return Ok();
         }
 
         // POST: Actions/Create
@@ -56,15 +64,15 @@ namespace Behavior.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("api/Actions/Create/{Action}")]
-        public async Task<IActionResult> Create([FromBody] Action action)
+        public IActionResult Create([FromBody] Action action)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(action);
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
-            return View(action);
+            return Ok(action);
         }
 
         // GET: Actions/Edit/5
@@ -82,7 +90,7 @@ namespace Behavior.Controllers
             {
                 return NotFound();
             }
-            return View(action);
+            return Ok(action);
         }
 
         // POST: Actions/Edit/5
@@ -117,7 +125,7 @@ namespace Behavior.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(action);
+            return Ok(action);
         }
 
         // GET: Actions/Delete/5
@@ -137,7 +145,7 @@ namespace Behavior.Controllers
                 return NotFound();
             }
 
-            return View(action);
+            return Ok(action);
         }
 
         // POST: Actions/Delete/5

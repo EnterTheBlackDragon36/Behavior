@@ -1,11 +1,11 @@
-﻿#nullable disable
+﻿using System;
+using System.Collections.Generic;
 
-namespace Behavior.Models
+namespace Behavior.Models;
+
+public partial class Talent
 {
-    public partial class Talent
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-    }
+    public int Id { get; set; }
+
+    public string Talent1 { get; set; }
 }

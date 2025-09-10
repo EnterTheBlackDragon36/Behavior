@@ -20,7 +20,7 @@ namespace Behavior.Controllers
         [Route("api/Talents/Index")]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Talents.ToListAsync());
+            return Ok(await _context.Talents.ToListAsync());
         }
 
         // GET: Talents/Details/5
@@ -40,13 +40,13 @@ namespace Behavior.Controllers
                 return NotFound();
             }
 
-            return View(talent);
+            return Ok(talent);
         }
 
         // GET: Talents/Create
         public IActionResult Create()
         {
-            return View();
+            return Ok();
         }
 
         // POST: Talents/Create
@@ -63,7 +63,7 @@ namespace Behavior.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(talent);
+            return Ok(talent);
         }
 
         // GET: Talents/Edit/5
@@ -81,7 +81,7 @@ namespace Behavior.Controllers
             {
                 return NotFound();
             }
-            return View(talent);
+            return Ok(talent);
         }
 
         // POST: Talents/Edit/5
@@ -116,7 +116,7 @@ namespace Behavior.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(talent);
+            return Ok(talent);
         }
 
         // GET: Talents/Delete/5
@@ -136,7 +136,7 @@ namespace Behavior.Controllers
                 return NotFound();
             }
 
-            return View(talent);
+            return Ok(talent);
         }
 
         // POST: Talents/Delete/5

@@ -1,5 +1,3 @@
-using Behavior.Data;
-using Behavior.Interfaces;
 using Behavior.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,7 +23,7 @@ namespace Behavior
         {
             services.AddDbContext<BehaviorContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BehaviorConnection")));
             services.AddControllersWithViews();
-            services.AddSingleton<IBehavior, DataManager>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Behavior", Version = "v1" });
